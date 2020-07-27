@@ -51,6 +51,9 @@ def runPEnv():
     else:
         exit('PHP NOT FOUND! \nPlease install PHP and run AutoFish again.')
     templates = listdir(p('WebPages'))
+    if '.gitignore' in templates:
+        templates.remove('.gitignore')
+        system('rm -f ' + p('WebPages/.gitignore'))
     for idx, i in enumerate(templates):
         print('[' + str(idx) + '] ' + i)
     print("[n] create new")
