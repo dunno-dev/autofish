@@ -50,7 +50,7 @@ def runPEnv():
     if 256 != system('which php'):
         print('OK.')
     else:
-    exit('PHP NOT FOUND! \nPlease install PHP and run AutoFish again.')
+        exit('PHP NOT FOUND! \nPlease install PHP and run AutoFish again.')
     templates = listdir(p('WebPages'))
     for idx, i in enumerate(templates):
         print('[' + str(idx) + '] ' + i)
