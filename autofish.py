@@ -5,7 +5,6 @@ from time import sleep
 from sys import stdout, exit
 from os import system, path, listdir
 import multiprocessing
-from urllib import urlopen
 def newtemplate(site):
     ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36'
     try:
@@ -22,7 +21,7 @@ def p(rel):
     return path.join(path.dirname(path.realpath(__file__)), rel)
 def connected(host='http://google.com'):
     try:
-        urlopen(host)
+        requests.get(host)
         return
     except:
         exit('Cannot connect to network.')
