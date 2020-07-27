@@ -58,7 +58,7 @@ def runPEnv():
         print('[' + str(idx) + '] ' + i)
     print("[n] create new")
     a = input('Choose template: ')
-    if a == n:
+    if a == 'n':
         if newtemplate(input("Webpage to copy with http(s): ")):
             exit("Created")
         else:
