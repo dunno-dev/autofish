@@ -23,7 +23,7 @@ def newtemplate(site, agent):
         i['href'] = urllib.parse.urljoin(site, i['href'])
     for i in s.find_all(src=True):
         i['src'] = urllib.parse.urljoin(site, i['src'])
-    with open(p('WebPages/' + site.replace('https://', 'http://').replace('http://', '')), 'w') as f:
+    with open(p('WebPages/' + site.replace('https://', 'http://').replace('http://', '').replace('/', '')), 'w') as f:
         f.write(s.prettify())
     return True
 def p(rel):
